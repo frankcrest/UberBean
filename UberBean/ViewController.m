@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
+#import <MapKit/MapKit.h>
 
 @interface ViewController ()
+
+@property(nonatomic,strong)MKMapView* mapView;
 
 @end
 
@@ -16,7 +19,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    [self setupView];
+    
+}
+
+-(void)setupView{
+    MKMapView* mapView = [[MKMapView alloc]initWithFrame:CGRectZero];
+    mapView.translatesAutoresizingMaskIntoConstraints = 0;
+    [self.view addSubview:mapView];
+    self.mapView = mapView;
+    
+    [NSLayoutConstraint activateConstraints:@[
+                                          [mapView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:0],
+                                          [mapView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:0],
+                                          [mapView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:0],
+                                          [mapView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:0],
+                                              ]];
 }
 
 
