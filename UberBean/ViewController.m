@@ -23,7 +23,6 @@
     [super viewDidLoad];
     
     [self.locationManager requestWhenInUseAuthorization];
-    [self.locationManager requestLocation];
     
     [self setupView];
 }
@@ -60,6 +59,12 @@
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
     NSLog(@"didfail");
+}
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
+    if (status == kCLAuthorizationStatusAuthorizedWhenInUse || status == kCLAuthorizationStatusAuthorizedAlways) {
+        [self.locationManager requestLocation];
+    }
 }
 
 @end
