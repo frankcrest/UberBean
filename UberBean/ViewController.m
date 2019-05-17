@@ -55,6 +55,8 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
     NSLog(@"getting location");
     CLLocation* location = locations[0];
+    
+    self.mapView.region = MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(0.6, 0.6));
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
