@@ -9,11 +9,16 @@
 #import "ViewController.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "Cafe.h"
+#import "NetworkManager.h"
 
 @interface ViewController ()<CLLocationManagerDelegate>
 
 @property(nonatomic,strong)MKMapView* mapView;
 @property(nonatomic,strong)CLLocationManager* locationManager;
+@property(nonatomic,strong)NSString* apiKey;
+@property(nonatomic,strong)NSMutableArray<Cafe*>* cafeObjects;
+@property(nonatomic,strong)NetworkManager* networkManager;
 
 @end
 
@@ -22,6 +27,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    self.apiKey = @"blW9-941GsYiAaztlNda-pL4VWReQ1rYwjPqYJpac0zsWKOuPy9ptxPft42NLpTKu8qiehf7oznwC16QLclvxX95LiQjkxLeLK_rsH6PD-w25HkZUitNP-3BMA3fXHYx";
+    self.cafeObjects = [[NSMutableArray alloc]init];
     [self.locationManager requestWhenInUseAuthorization];
     
     [self setupView];
@@ -35,6 +43,13 @@
         _locationManager.delegate = self;
     }
     return _locationManager;
+}
+
+- (NetworkManager *)networkManager{
+    if (!_networkManager) {
+        _networkManager = [[NetworkManager alloc]init];
+    }
+    return _networkManager;
 }
 
 -(void)setupView{
@@ -56,7 +71,25 @@
     NSLog(@"getting location");
     CLLocation* location = locations[0];
     
+    if (location !=nil && self.cafeObjects.count < 1) {
+        [self.networkManager requestYelp:location withApiKey:self.apiKey withCompletionHandler:^(NSDictionary * _Nonnull json) {
+            NSArray* cafeArray =  [json objectForKey:@"businesses"];
+            for (NSDictionary* dict in cafeArray) {
+                Cafe* cafe = [Cafe parseJson:dict];
+                [self.cafeObjects addObject:cafe];
+            }
+            NSLog(@"%@", self.cafeObjects);
+        }];
+    }
+    
+    
+    NSLog(@"%@", self.cafeObjects);
+    
     self.mapView.region = MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(0.6, 0.6));
+}
+
+- (void)locationManagerDidPauseLocationUpdates:(CLLocationManager *)manager{
+    NSLog(@"%@", self.cafeObjects);
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
@@ -68,5 +101,6 @@
         [self.locationManager requestLocation];
     }
 }
+
 
 @end

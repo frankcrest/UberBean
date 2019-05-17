@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E9021F5E228F520A006F8364 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9021F5D228F5209006F8364 /* NetworkManager.m */; };
 		E99656D6228F399F0005F29F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E99656D5228F399F0005F29F /* AppDelegate.m */; };
 		E99656D9228F399F0005F29F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E99656D8228F399F0005F29F /* ViewController.m */; };
 		E99656DC228F399F0005F29F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E99656DA228F399F0005F29F /* Main.storyboard */; };
@@ -14,9 +15,12 @@
 		E99656E1228F39A10005F29F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E99656DF228F39A10005F29F /* LaunchScreen.storyboard */; };
 		E99656E4228F39A10005F29F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E99656E3228F39A10005F29F /* main.m */; };
 		E99656EC228F3BAC0005F29F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E99656EB228F3BAC0005F29F /* MapKit.framework */; };
+		E9FB6E8E228F4751005E2122 /* Cafe.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FB6E8D228F4751005E2122 /* Cafe.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E9021F5C228F5209006F8364 /* NetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
+		E9021F5D228F5209006F8364 /* NetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		E99656D1228F399F0005F29F /* UberBean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UberBean.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E99656D4228F399F0005F29F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E99656D5228F399F0005F29F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -28,6 +32,8 @@
 		E99656E2228F39A10005F29F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E99656E3228F39A10005F29F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E99656EB228F3BAC0005F29F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		E9FB6E8C228F4751005E2122 /* Cafe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cafe.h; sourceTree = "<group>"; };
+		E9FB6E8D228F4751005E2122 /* Cafe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cafe.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,10 @@
 				E99656D5228F399F0005F29F /* AppDelegate.m */,
 				E99656D7228F399F0005F29F /* ViewController.h */,
 				E99656D8228F399F0005F29F /* ViewController.m */,
+				E9021F5C228F5209006F8364 /* NetworkManager.h */,
+				E9021F5D228F5209006F8364 /* NetworkManager.m */,
+				E9FB6E8C228F4751005E2122 /* Cafe.h */,
+				E9FB6E8D228F4751005E2122 /* Cafe.m */,
 				E99656DA228F399F0005F29F /* Main.storyboard */,
 				E99656DD228F39A10005F29F /* Assets.xcassets */,
 				E99656DF228F39A10005F29F /* LaunchScreen.storyboard */,
@@ -158,8 +168,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9FB6E8E228F4751005E2122 /* Cafe.m in Sources */,
 				E99656D9228F399F0005F29F /* ViewController.m in Sources */,
 				E99656E4228F39A10005F29F /* main.m in Sources */,
+				E9021F5E228F520A006F8364 /* NetworkManager.m in Sources */,
 				E99656D6228F399F0005F29F /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
