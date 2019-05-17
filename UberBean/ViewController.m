@@ -8,10 +8,12 @@
 
 #import "ViewController.h"
 #import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface ViewController ()
+@interface ViewController ()<CLLocationManagerDelegate>
 
 @property(nonatomic,strong)MKMapView* mapView;
+@property(nonatomic,strong)CLLocationManager* locationManager;
 
 @end
 
@@ -20,13 +22,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setupView];
+    [self.locationManager requestWhenInUseAuthorization];
+    [self.locationManager requestLocation];
     
+    [self setupView];
+}
+
+- (CLLocationManager *)locationManager{
+    if (!_locationManager) {
+        _locationManager = [[CLLocationManager alloc]init];
+        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        _locationManager.distanceFilter = 10;
+        _locationManager.delegate = self;
+    }
+    return _locationManager;
 }
 
 -(void)setupView{
     MKMapView* mapView = [[MKMapView alloc]initWithFrame:CGRectZero];
     mapView.translatesAutoresizingMaskIntoConstraints = 0;
+    mapView.showsUserLocation = YES;
     [self.view addSubview:mapView];
     self.mapView = mapView;
     
@@ -38,5 +53,13 @@
                                               ]];
 }
 
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
+    NSLog(@"getting location");
+    CLLocation* location = locations[0];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+    NSLog(@"didfail");
+}
 
 @end
