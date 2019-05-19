@@ -71,19 +71,23 @@
     NSLog(@"getting location");
     CLLocation* location = locations[0];
     
-    if (location !=nil && self.cafeObjects.count < 1) {
+    if (location !=nil) {
         [self.networkManager requestYelp:location withApiKey:self.apiKey withCompletionHandler:^(NSDictionary * _Nonnull json) {
             NSArray* cafeArray =  [json objectForKey:@"businesses"];
+            
             for (NSDictionary* dict in cafeArray) {
                 Cafe* cafe = [Cafe parseJson:dict];
                 [self.cafeObjects addObject:cafe];
             }
-            NSLog(@"%@", self.cafeObjects);
+            
+                for (Cafe* cafe in self.cafeObjects) {
+                    cafe.title = cafe.name;
+                    [self.mapView addAnnotation:cafe];
+                }
         }];
     }
     
-    
-    NSLog(@"%@", self.cafeObjects);
+
     
     self.mapView.region = MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(0.6, 0.6));
 }
