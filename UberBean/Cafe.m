@@ -10,7 +10,7 @@
 
 @implementation Cafe
 
-- (instancetype)initWithName:(NSString *)name withPhone:(NSString *)phone withRating:(NSString *)rating withPrice:(NSString *)price withCoordinate:(CLLocationCoordinate2D)coordinate
+- (instancetype)initWithName:(NSString *)name withPhone:(NSString *)phone withRating:(NSNumber *)rating withPrice:(NSString *)price withCoordinate:(CLLocationCoordinate2D)coordinate withUrl:(NSString *)imageUrl
 {
     self = [super init];
     if (self) {
@@ -20,12 +20,14 @@
         _price = price;
         _title = name;
         _coordinate = coordinate;
+        _imageUrl = imageUrl;
+        _subtitle = [_rating stringValue];
     }
     return self;
 }
 
 +(instancetype)parseJson:(NSDictionary*)json{
-    return [[Cafe alloc]initWithName:json[@"name"] withPhone:json[@"phone"] withRating:json[@"rating"] withPrice:json[@"price"] withCoordinate:CLLocationCoordinate2DMake([json[@"coordinates"][@"latitude"]doubleValue], [json[@"coordinates"][@"longitude"]doubleValue])];
+    return [[Cafe alloc]initWithName:json[@"name"] withPhone:json[@"phone"] withRating:json[@"rating"] withPrice:json[@"price"] withCoordinate:CLLocationCoordinate2DMake([json[@"coordinates"][@"latitude"]doubleValue], [json[@"coordinates"][@"longitude"]doubleValue]) withUrl:json[@"image_url"]];
 }
 
 @end

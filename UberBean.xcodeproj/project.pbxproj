@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E9021F5E228F520A006F8364 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9021F5D228F5209006F8364 /* NetworkManager.m */; };
+		E927A6C422910FD400E0640D /* CustomImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E927A6C322910FD400E0640D /* CustomImageView.m */; };
 		E99656D6228F399F0005F29F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E99656D5228F399F0005F29F /* AppDelegate.m */; };
 		E99656D9228F399F0005F29F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E99656D8228F399F0005F29F /* ViewController.m */; };
 		E99656DC228F399F0005F29F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E99656DA228F399F0005F29F /* Main.storyboard */; };
@@ -21,6 +22,8 @@
 /* Begin PBXFileReference section */
 		E9021F5C228F5209006F8364 /* NetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
 		E9021F5D228F5209006F8364 /* NetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
+		E927A6C222910FD400E0640D /* CustomImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomImageView.h; sourceTree = "<group>"; };
+		E927A6C322910FD400E0640D /* CustomImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomImageView.m; sourceTree = "<group>"; };
 		E99656D1228F399F0005F29F /* UberBean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UberBean.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E99656D4228F399F0005F29F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E99656D5228F399F0005F29F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -74,6 +77,8 @@
 				E99656D8228F399F0005F29F /* ViewController.m */,
 				E9021F5C228F5209006F8364 /* NetworkManager.h */,
 				E9021F5D228F5209006F8364 /* NetworkManager.m */,
+				E927A6C222910FD400E0640D /* CustomImageView.h */,
+				E927A6C322910FD400E0640D /* CustomImageView.m */,
 				E9FB6E8C228F4751005E2122 /* Cafe.h */,
 				E9FB6E8D228F4751005E2122 /* Cafe.m */,
 				E99656DA228F399F0005F29F /* Main.storyboard */,
@@ -173,6 +178,7 @@
 				E99656E4228F39A10005F29F /* main.m in Sources */,
 				E9021F5E228F520A006F8364 /* NetworkManager.m in Sources */,
 				E99656D6228F399F0005F29F /* AppDelegate.m in Sources */,
+				E927A6C422910FD400E0640D /* CustomImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

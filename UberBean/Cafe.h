@@ -15,12 +15,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,strong) NSString* name;
 @property(nonatomic,strong) NSString* phone;
-@property(nonatomic,strong) NSString* rating;
+@property(nonatomic,strong) NSNumber* rating;
 @property(nonatomic,strong)NSString* price;
 @property(nonatomic,copy)NSString* title;
 @property(nonatomic,readonly)CLLocationCoordinate2D coordinate;
+@property(nonatomic,strong)NSString* imageUrl;
+@property(nonatomic,copy)NSString* subtitle;
 
--(instancetype)initWithName:(NSString*)name withPhone:(NSString*)phone withRating:(NSString*)rating withPrice:(NSString*)price withCoordinate:(CLLocationCoordinate2D)coordinate;
+-(instancetype)initWithName:(NSString*)name withPhone:(NSString*)phone withRating:(NSString*)rating withPrice:(NSString*)price withCoordinate:(CLLocationCoordinate2D)coordinate withUrl:(NSString*)imageUrl;
 
 +(instancetype)parseJson:(NSDictionary*)json;
 

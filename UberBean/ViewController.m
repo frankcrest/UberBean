@@ -11,6 +11,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "Cafe.h"
 #import "NetworkManager.h"
+#import "CustomImageView.h"
 
 @interface ViewController ()<CLLocationManagerDelegate,MKMapViewDelegate>
 
@@ -78,6 +79,7 @@
             
             for (NSDictionary* dict in cafeArray) {
                 Cafe* cafe = [Cafe parseJson:dict];
+
                 [self.cafeObjects addObject:cafe];
                 [self.mapView addAnnotation:cafe];
                 [self.mapView showAnnotations:self.cafeObjects animated:true];
@@ -108,11 +110,24 @@
     if (!markerView && ![annotation isKindOfClass:[MKUserLocation class]]) {
         markerView = [[MKMarkerAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"MarkerView"];
         markerView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeInfoLight];
+        markerView.leftCalloutAccessoryView = [[CustomImageView alloc]initWithFrame:CGRectMake(0, 0, 50, 50)];
         markerView.markerTintColor = [UIColor cyanColor];
         markerView.canShowCallout = YES;
     }
     
     return markerView;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
+
+    CustomImageView*imageView = (CustomImageView*)view.leftCalloutAccessoryView;
+    
+    NSLog(@"%@", view.annotation.title);
+    for (Cafe* cafe in self.cafeObjects) {
+        if (view.annotation.title == cafe.title) {
+             [imageView loadImageFromWeb:[NSURL URLWithString:cafe.imageUrl]];
+        }
+    }
     
 }
 
