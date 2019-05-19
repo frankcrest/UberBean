@@ -12,7 +12,7 @@
 #import "Cafe.h"
 #import "NetworkManager.h"
 
-@interface ViewController ()<CLLocationManagerDelegate>
+@interface ViewController ()<CLLocationManagerDelegate,MKMapViewDelegate>
 
 @property(nonatomic,strong)MKMapView* mapView;
 @property(nonatomic,strong)CLLocationManager* locationManager;
@@ -56,6 +56,7 @@
     MKMapView* mapView = [[MKMapView alloc]initWithFrame:CGRectZero];
     mapView.translatesAutoresizingMaskIntoConstraints = 0;
     mapView.showsUserLocation = YES;
+    mapView.delegate = self;
     [self.view addSubview:mapView];
     self.mapView = mapView;
     
@@ -78,17 +79,11 @@
             for (NSDictionary* dict in cafeArray) {
                 Cafe* cafe = [Cafe parseJson:dict];
                 [self.cafeObjects addObject:cafe];
+                [self.mapView addAnnotation:cafe];
+                [self.mapView showAnnotations:self.cafeObjects animated:true];
             }
-            
-                for (Cafe* cafe in self.cafeObjects) {
-                    cafe.title = cafe.name;
-                    [self.mapView addAnnotation:cafe];
-                }
         }];
     }
-    
-
-    
     self.mapView.region = MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(0.6, 0.6));
 }
 
@@ -106,5 +101,19 @@
     }
 }
 
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
+   
+    MKMarkerAnnotationView* markerView = (MKMarkerAnnotationView*) [mapView dequeueReusableAnnotationViewWithIdentifier:@"MarkerView"];
+    
+    if (!markerView && ![annotation isKindOfClass:[MKUserLocation class]]) {
+        markerView = [[MKMarkerAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"MarkerView"];
+        markerView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeInfoLight];
+        markerView.markerTintColor = [UIColor cyanColor];
+        markerView.canShowCallout = YES;
+    }
+    
+    return markerView;
+    
+}
 
 @end
